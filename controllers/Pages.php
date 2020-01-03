@@ -76,8 +76,8 @@ class Pages extends Controller
 
     $fieldConfig = [
         'type'    => 'datepicker',
-        'label'   => 'hackolein.contentsynchronisation::lang.form.' . $dateType,
-        'comment' => 'hackolein.contentsynchronisation::lang.form.' . $dateType . '_comment',
+        'label'   => 'hackolein.workflow::lang.form.' . $dateType,
+        'comment' => 'hackolein.workflow::lang.form.' . $dateType . '_comment',
         'span'    => 'left',
     ];
 
@@ -99,11 +99,11 @@ class Pages extends Controller
 
     $fieldConfig = [
         'type'    => 'dropdown',
-        'label'   => 'hackolein.contentsynchronisation::lang.form.status.label',
-        'comment' => 'hackolein.contentsynchronisation::lang.form.status.comment',
+        'label'   => 'hackolein.workflow::lang.form.status.label',
+        'comment' => 'hackolein.workflow::lang.form.status.comment',
         'options' => [
-            self::DRAFT     => 'hackolein.contentsynchronisation::lang.form.status.draft',
-            self::PUBLISHED => 'hackolein.contentsynchronisation::lang.form.status.published',
+            self::DRAFT     => 'hackolein.workflow::lang.form.status.draft',
+            self::PUBLISHED => 'hackolein.workflow::lang.form.status.published',
         ],
         'span'    => 'right',
     ];

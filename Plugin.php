@@ -4,7 +4,6 @@ use Backend\Facades\BackendAuth;
 use Backend\Widgets\Form;
 use Carbon\Carbon;
 use Cms\Classes\Page;
-use Hackolein\ContentSynchronisation\classes\Controller;
 use System\Classes\PluginBase;
 use System\Classes\PluginManager;
 use Illuminate\Support\Facades\Event;
@@ -20,7 +19,7 @@ class Plugin extends PluginBase
 
       if ($formWidget->model instanceof Page) {
 
-        Controller::instance()->extendForm($formWidget, Page::class);
+        Controllers\::instance()->extendForm($formWidget, Page::class);
       }
 
 
