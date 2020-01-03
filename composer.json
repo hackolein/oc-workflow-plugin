@@ -1,7 +1,7 @@
 {
-    "name": "hackolein/octobercms-workflow-plugin",
+    "name": "hackolein/oc-workflow-plugin",
     "description": "Add a online and offline Date and status to a page.",
-    "type": "octobercms-plugin",
+    "type": "october-plugin",
     "license": "MIT",
     "authors": [
         {
