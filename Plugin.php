@@ -4,6 +4,7 @@ use Backend\Facades\BackendAuth;
 use Backend\Widgets\Form;
 use Carbon\Carbon;
 use Cms\Classes\Page;
+use Hackolein\Workflow\Pages\Pages;
 use System\Classes\PluginBase;
 use System\Classes\PluginManager;
 use Illuminate\Support\Facades\Event;
@@ -19,41 +20,41 @@ class Plugin extends PluginBase
 
       if ($formWidget->model instanceof Page) {
 
-        Controllers\::instance()->extendForm($formWidget, Page::class);
+        Pages::instance()->extendForm($formWidget, Page::class);
       }
 
 
       if (PluginManager::instance()->exists('RainLab.Pages') && $formWidget->model instanceof \RainLab\Pages\Classes\Page) {
 
-        Controller::instance()->extendForm($formWidget, \RainLab\Pages\Classes\Page::class);
+        Pages::instance()->extendForm($formWidget, \RainLab\Pages\Classes\Page::class);
       }
 
     }
     );
 
     Event::listen(
-        'cms.page.start', function (\Cms\Classes\Controller $controller) {
+        'cms.page.start', function (\Cms\Classes\Pages $controller) {
 
-      Controller::instance()->initSettings($controller->getPage());
+      Pages::instance()->initSettings($controller->getPage());
 
       $page = $controller->getPage();
       $now = Carbon::now();
 
       if (!BackendAuth::getUser()
           &&
-          ($page->settings[Controller::STATUS] == null || $page->settings[Controller::STATUS] == Controller::PUBLISHED)) {
-        if ($page->settings[Controller::PUBLISHED_AT] && $now->lt($page->settings[Controller::PUBLISHED_AT])) {
+          ($page->settings[Pages::STATUS] == null || $page->settings[Pages::STATUS] == Pages::PUBLISHED)) {
+        if ($page->settings[Pages::PUBLISHED_AT] && $now->lt($page->settings[Pages::PUBLISHED_AT])) {
 
           return $controller->run(404);
         }
 
-        if ($page->settings[Controller::OFFLINE_AT] && $now->gt($page->settings[Controller::OFFLINE_AT])) {
+        if ($page->settings[Pages::OFFLINE_AT] && $now->gt($page->settings[Pages::OFFLINE_AT])) {
 
           return $controller->run(404);
         }
       }
 
-      if ($page->settings[Controller::STATUS] == Controller::DRAFT && !BackendAuth::getUser()) {
+      if ($page->settings[Pages::STATUS] == Pages::DRAFT && !BackendAuth::getUser()) {
 
         return $controller->run(404);
       }
