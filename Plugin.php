@@ -3,8 +3,9 @@
 use Backend\Facades\BackendAuth;
 use Backend\Widgets\Form;
 use Carbon\Carbon;
+use Cms\Classes\Controller;
 use Cms\Classes\Page;
-use Hackolein\Workflow\Pages\Pages;
+use Hackolein\Workflow\Controllers\Pages;
 use System\Classes\PluginBase;
 use System\Classes\PluginManager;
 use Illuminate\Support\Facades\Event;
@@ -33,7 +34,7 @@ class Plugin extends PluginBase
     );
 
     Event::listen(
-        'cms.page.start', function (\Cms\Classes\Pages $controller) {
+        'cms.page.start', function (Controller $controller) {
 
       Pages::instance()->initSettings($controller->getPage());
 
@@ -63,11 +64,11 @@ class Plugin extends PluginBase
     }
     );
   }
-    public function registerComponents()
-    {
-    }
+  public function registerComponents()
+  {
+  }
 
-    public function registerSettings()
-    {
-    }
+  public function registerSettings()
+  {
+  }
 }

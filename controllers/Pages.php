@@ -1,11 +1,12 @@
-<?php namespace Hackolein\Workflow\Pages;
+<?php namespace Hackolein\Workflow\Controllers;
 
+use Backend\Classes\Controller;
 use Backend\Widgets\Form;
 use Carbon\Carbon;
 use Cms\Classes\Page;
 use October\Rain\Support\Traits\Singleton;
 
-class Pages extends Backend\Classes\Pages
+class Pages extends Controller
 {
 
   use Singleton;
