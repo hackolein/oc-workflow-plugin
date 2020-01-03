@@ -1,0 +1,6 @@
+plugin:
+    name: 'hackolein.workflow::lang.plugin.name'
+    description: 'hackolein.workflow::lang.plugin.description'
+    author: 'Heiko Böhme'
+    icon: oc-icon-rocket
+    homepage: ''
